@@ -1,0 +1,25 @@
+Роутинг создаём через файловую систему.
+pages - зарезервированное слово в NextJS. /pages - задаём страницы роутинга
+название файла в папке pages ведёт на аналогичный роут,
+например: index.js - это http://localhost:3000/
+например: about.js - это http://localhost:3000/about
+
+динамический рендеринг
+задавая имя файла с помощью квадратных скобок. когда файл в папке, мы можем делать динамический рендеринг
+например /post/[id].js
+достать переданный аргумент можем так:
+const router = useRouter();
+const {id} = router.query; // достали переданный параметр
+
+варианты рендеринга
+pages/index.js - http://localhost:3000/
+pages/about.js - http://localhost:3000/about
+pages/about/about/index.js http://localhost:3000/about
+pages/about/about/author.js http://localhost:3000/about/author
+pages/about/post/[id].js http://localhost:3000/post/332
+_____________
+
+npm run dev - формирует папку /.next -системные файлы для сервера
+
+структура:
+/public - статические файлы
