@@ -1,17 +1,12 @@
 import {Main} from "../../components-layouts/MainLayout";
 import Link from "next/link";
-// import {useEffect, useState} from "react";
+import {IPost} from "../../interfaces/IPost";
 
-export default function Index({posts}) {
-    // так мы обычно запрашиваем данные в реакте
-    // const [posts, setPosts] = useState([]);
-    // const loadPostsOnMount = () => {
-    //     fetch('http://localhost:4200/posts')
-    //         .then(r => r.json())
-    //         .then(r => setPosts(r))
-    // }
-    // useEffect(loadPostsOnMount, [])
+interface Props {
+    posts: IPost[]
+}
 
+export default function Index({posts}: Props) {
     return (
         <Main>
             <h5>posts</h5>
@@ -37,6 +32,6 @@ export default function Index({posts}) {
 // https://nextjs.org/docs/api-reference/data-fetching/getInitialProps
 Index.getInitialProps = async () => {
     const response = await fetch('http://localhost:4200/posts');
-    const posts = await response.json();
+    const posts: IPost[] = await response.json();
     return {posts}
 }
